@@ -564,7 +564,7 @@ Header Style
     border-radius: 0px 0px 25px 25px;
   }
   .header-area .main-nav .nav {
-    height: auto;
+    height: auto;bg
     flex-basis: 100%;
   }
   .header-area .main-nav .logo {
@@ -579,7 +579,7 @@ Header Style
     top: 0px !important;
   }
   .header-area .main-nav .border-button {
-    position: absolute;
+    position: absbgolute;
     top: 15px;
     right: 70px;
   }
@@ -651,7 +651,7 @@ Banner Style
 */
 
 .main-banner {
-  background-image: url(../images/banner-bg.jpg);
+  background-image: url(../images/bannertest.jpg);
   border-radius: 0px 0px 150px 150px;
   background-position: center bottom;
   background-repeat: no-repeat;
@@ -1670,4 +1670,5 @@ body {
 
 @media (max-width: 1200px) {
   
+
 }
