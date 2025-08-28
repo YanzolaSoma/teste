@@ -1,255 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <title>YCM</title>
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/templatemo-lugx-gaming.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-    <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <title>YCM</title>
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/fontawesome.css">
+  <link rel="stylesheet" href="assets/css/templatemo-lugx-gaming.css">
+  <link rel="stylesheet" href="assets/css/owl.css">
+  <link rel="stylesheet" href="assets/css/animate.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
 
-    <style>
-      /* ===== Mascote Waifu ===== */
-      .waifu-mascot {
-        position: fixed;
-        bottom: 20px;
-        left: 20px;
-        z-index: 9999;
-        display: flex;
-        align-items: flex-end;
-        gap: 10px;
-      }
+  <style>
+    /* ===== Preloader Anime Style ===== */
+    #anime-preloader {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #ffb6f9, #ffd6e0, #c7b8ff);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 999999;
+      font-family: "Poppins", sans-serif;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
 
-      .waifu-mascot img {
-        width: 120px;
-        height: auto;
-        border-radius: 12px;
-      }
+    #anime-preloader.fade-out {
+      opacity: 0;
+      visibility: hidden;
+    }
 
-      .waifu-dialog {
-        max-width: 220px;
-        background: rgba(255, 255, 255, 0.9);
-        border: 2px solid #ff80c0;
-        border-radius: 12px;
-        padding: 8px 12px;
-        font-family: "Poppins", sans-serif;
-        font-size: 14px;
-        color: #333;
-        box-shadow: 0 0 10px rgba(0,0,0,0.2);
-        animation: fadeIn 0.5s ease;
-      }
+    #anime-preloader img {
+      width: 120px;
+      margin-bottom: 15px;
+      filter: drop-shadow(0 0 10px #ff6ee7);
+      animation: pulse 1.5s infinite;
+    }
 
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-    </style>
-  </head>
+    #anime-preloader h2 {
+      color: #fff;
+      font-size: 28px;
+      font-weight: 800;
+      text-shadow: 0 0 12px #ff6ee7, 0 0 24px #ff80c0;
+      animation: bounce 1.5s infinite;
+    }
 
-  <body>
-    <!-- ***** Preloader Start ***** -->
-    <div id="js-preloader" class="js-preloader">
-      <div class="preloader-inner">
-        <span class="dot"></span>
-        <div class="dots">
-          <span></span><span></span><span></span>
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* ===== Mascote Waifu ===== */
+    .waifu-mascot {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 9999;
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
+    .waifu-mascot img {
+      width: 120px;
+      height: auto;
+      border-radius: 12px;
+      filter: drop-shadow(0 0 10px #ff80c0);
+    }
+
+    .waifu-dialog {
+      max-width: 220px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid #ff80c0;
+      border-radius: 12px;
+      padding: 8px 12px;
+      font-family: "Poppins", sans-serif;
+      font-size: 14px;
+      color: #333;
+      box-shadow: 0 0 15px rgba(255,0,128,0.3);
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== Preloader Anime ===== -->
+  <div id="anime-preloader">
+    <img src="https://i.pinimg.com/originals/1c/f2/70/1cf2702f9b8d0751c063ab1c35d6ac7b.gif" alt="loading">
+    <h2>CARREGANDO...</h2>
+  </div>
+
+  <!-- ===== Header ===== -->
+  <header class="header-area header-sticky">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <a href="index.html" class="logo">
+              <img src="assets/images/images.jpeg" alt="" style="width: 158px;">
+            </a>
+            <ul class="nav">
+              <li><a href="index.html" class="active">Home</a></li>
+              <li><a href="shop.html">Our Shop</a></li>
+              <li><a href="product-details.html">Product Details</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="#">Sign In</a></li>
+            </ul>   
+            <a class='menu-trigger'>
+              <span>Menu</span>
+            </a>
+          </nav>
         </div>
       </div>
     </div>
-    <!-- ***** Preloader End ***** -->
+  </header>
 
-    <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <nav class="main-nav">
-              <a href="index.html" class="logo">
-                <img src="assets/images/images.jpeg" alt="" style="width: 158px;">
-              </a>
-              <ul class="nav">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="shop.html">Our Shop</a></li>
-                <li><a href="product-details.html">Product Details</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-                <li><a href="#">Sign In</a></li>
-              </ul>   
-              <a class='menu-trigger'>
-                <span>Menu</span>
-              </a>
-            </nav>
+  <!-- ===== Banner ===== -->
+  <div class="main-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 align-self-center">
+          <div class="caption header-text">
+            <h6>Welcome to lugx</h6>
+            <h2>BEST GAMING SITE EVER!</h2>
+            <p>LUGX Gaming is free Bootstrap 5 HTML CSS website template for your gaming websites. You can download and use this layout for commercial purposes. Please tell your friends about TemplateMo.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 offset-lg-2">
+          <div class="right-image">
+            <img src="assets/images/images.jpeg" alt="">
+            <span class="price">$22</span>
+            <span class="offer">-40%</span>
           </div>
         </div>
       </div>
-    </header>
-    <!-- ***** Header Area End ***** -->
+    </div>
+  </div>
 
-    <!-- ***** Main Banner Section ***** -->
-    <div class="main-banner">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 align-self-center">
-            <div class="caption header-text">
-              <h6>Welcome to lugx</h6>
-              <h2>BEST GAMING SITE EVER!</h2>
-              <p>LUGX Gaming is free Bootstrap 5 HTML CSS website template for your gaming websites. You can download and use this layout for commercial purposes. Please tell your friends about TemplateMo.</p>
-            </div>
-          </div>
-          <div class="col-lg-4 offset-lg-2">
-            <div class="right-image">
-              <img src="assets/images/images.jpeg" alt="">
-              <span class="price">$22</span>
-              <span class="offer">-40%</span>
-            </div>
-          </div>
-        </div>
+  <!-- ===== Flappy Bird ===== -->
+  <div class="game-section">
+    <h2>Play Flappy Bird!</h2>
+    <canvas id="flappyBirdGame" width="800" height="600"></canvas>
+  </div>
+
+  <!-- ===== Mascote Waifu ===== -->
+  <div class="waifu-mascot">
+    <img src="https://i.pinimg.com/originals/62/29/11/622911c34890dd8889ac6be8e1945df2.gif" alt="waifu">
+    <div class="waifu-dialog" id="waifuDialog">Oi mestre~ 💖 Vamos jogar Flappy Bird?</div>
+  </div>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="container">
+      <div class="col-lg-12">
+        <p>Copyright © 2048 LUGX Gaming Company. All rights reserved. 
+        &nbsp;&nbsp; <a rel="nofollow" href="https://templatemo.com" target="_blank">Design: TemplateMo</a></p>
       </div>
     </div>
+  </footer>
 
-    <!-- ***** Flappy Bird Game Section ***** -->
-    <div class="game-section">
-      <h2>Play Flappy Bird!</h2>
-      <canvas id="flappyBirdGame" width="800" height="600"></canvas>
-    </div>
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/js/isotope.min.js"></script>
+  <script src="assets/js/owl-carousel.js"></script>
+  <script src="assets/js/counter.js"></script>
+  <script src="assets/js/custom.js"></script>
 
-    <!-- ===== Mascote Waifu ===== -->
-    <div class="waifu-mascot">
-      <img src="https://i.pinimg.com/originals/62/29/11/622911c34890dd8889ac6be8e1945df2.gif" alt="waifu">
-      <div class="waifu-dialog" id="waifuDialog">Oi mestre~ 💖 Vamos jogar Flappy Bird? </div>
-    </div>
+  <script>
+    // ===== Preloader desaparece quando o site carrega =====
+    window.addEventListener("load", () => {
+      document.getElementById("anime-preloader").classList.add("fade-out");
+    });
 
-    <footer>
-      <div class="container">
-        <div class="col-lg-12">
-          <p>Copyright © 2048 LUGX Gaming Company. All rights reserved. &nbsp;&nbsp; <a rel="nofollow" href="https://templatemo.com" target="_blank">Design: TemplateMo</a></p>
-        </div>
-      </div>
-    </footer>
+    // ===== Jogo Flappy Bird =====
+    const birdImage = new Image();
+    birdImage.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOLplzV906A5uOSnie-v2U4bn-yaaCqz80xg&s";
 
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/isotope.min.js"></script>
-    <script src="assets/js/owl-carousel.js"></script>
-    <script src="assets/js/counter.js"></script>
-    <script src="assets/js/custom.js"></script>
+    const canvas = document.getElementById("flappyBirdGame");
+    const ctx = canvas.getContext("2d");
 
-    <script>
-      // Definindo a imagem do pássaro
-      const birdImage = new Image();
-      birdImage.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOLplzV906A5uOSnie-v2U4bn-yaaCqz80xg&s";
+    let birdY = canvas.height / 2;
+    let birdX = 50;
+    let birdVelocity = 0;
+    const gravity = 0.5;
+    const jump = -10;
 
-      const canvas = document.getElementById("flappyBirdGame");
-      const ctx = canvas.getContext("2d");
+    const pipes = [];
+    const pipeWidth = 50;
+    const pipeGap = 200;
+    let pipeInterval = 100;
+    let frame = 0;
 
-      let birdY = canvas.height / 2;
-      let birdX = 50;
-      let birdVelocity = 0;
-      const gravity = 0.5;
-      const jump = -10;
+    function drawBird() {
+      ctx.drawImage(birdImage, birdX, birdY, 40, 40);
+    }
 
-      const pipes = [];
-      const pipeWidth = 50;
-      const pipeGap = 200;
-      let pipeInterval = 100;
-      let frame = 0;
+    function drawPipes() {
+      for (let i = 0; i < pipes.length; i++) {
+        const pipe = pipes[i];
+        ctx.fillStyle = "green";
+        ctx.fillRect(pipe.x, 0, pipeWidth, pipe.top);
+        ctx.fillRect(pipe.x, pipe.bottom, pipeWidth, canvas.height - pipe.bottom);
+      }
+    }
 
-      function drawBird() {
-        ctx.drawImage(birdImage, birdX, birdY, 40, 40);
+    function updatePipes() {
+      if (frame % pipeInterval === 0) {
+        const pipeHeight = Math.floor(Math.random() * (canvas.height - pipeGap));
+        pipes.push({ x: canvas.width, top: pipeHeight, bottom: pipeHeight + pipeGap });
       }
 
-      function drawPipes() {
-        for (let i = 0; i < pipes.length; i++) {
-          const pipe = pipes[i];
-          ctx.fillStyle = "green";
-          ctx.fillRect(pipe.x, 0, pipeWidth, pipe.top);
-          ctx.fillRect(pipe.x, pipe.bottom, pipeWidth, canvas.height - pipe.bottom);
+      for (let i = 0; i < pipes.length; i++) {
+        pipes[i].x -= 2;
+
+        if (pipes[i].x + pipeWidth <= 0) {
+          pipes.splice(i, 1);
+          i--;
         }
       }
+    }
 
-      function updatePipes() {
-        if (frame % pipeInterval === 0) {
-          const pipeHeight = Math.floor(Math.random() * (canvas.height - pipeGap));
-          pipes.push({ x: canvas.width, top: pipeHeight, bottom: pipeHeight + pipeGap });
-        }
-
-        for (let i = 0; i < pipes.length; i++) {
-          pipes[i].x -= 2;
-
-          if (pipes[i].x + pipeWidth <= 0) {
-            pipes.splice(i, 1);
-            i--;
-          }
+    function detectCollision() {
+      for (let i = 0; i < pipes.length; i++) {
+        const pipe = pipes[i];
+        if (
+          birdX + 40 > pipe.x &&
+          birdX < pipe.x + pipeWidth &&
+          (birdY < pipe.top || birdY + 40 > pipe.bottom)
+        ) {
+          return true;
         }
       }
+      return birdY <= 0 || birdY + 40 >= canvas.height;
+    }
 
-      function detectCollision() {
-        for (let i = 0; i < pipes.length; i++) {
-          const pipe = pipes[i];
-          if (
-            birdX + 40 > pipe.x &&
-            birdX < pipe.x + pipeWidth &&
-            (birdY < pipe.top || birdY + 40 > pipe.bottom)
-          ) {
-            return true;
-          }
-        }
-        return birdY <= 0 || birdY + 40 >= canvas.height;
+    function update() {
+      birdVelocity += gravity;
+      birdY += birdVelocity;
+
+      if (detectCollision()) {
+        resetGame();
+        showWaifuMessage("Awn... você perdeu 😢 Tenta de novo!");
       }
 
-      function update() {
-        birdVelocity += gravity;
-        birdY += birdVelocity;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawBird();
+      drawPipes();
+      updatePipes();
 
-        if (detectCollision()) {
-          resetGame();
-          showWaifuMessage("Awn... você perdeu 😢 Tenta de novo!");
-        }
+      frame++;
+      requestAnimationFrame(update);
+    }
 
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawBird();
-        drawPipes();
-        updatePipes();
+    function jumpBird() {
+      birdVelocity = jump;
+      showWaifuMessage("Boa! Pulou direitinho! 💕");
+    }
 
-        frame++;
-        requestAnimationFrame(update);
-      }
+    function resetGame() {
+      birdY = canvas.height / 2;
+      birdVelocity = 0;
+      pipes.length = 0;
+      frame = 0;
+    }
 
-      function jumpBird() {
-        birdVelocity = jump;
-        showWaifuMessage("Boa! Pulou direitinho! 💕");
-      }
+    document.addEventListener("keydown", jumpBird);
 
-      function resetGame() {
-        birdY = canvas.height / 2;
-        birdVelocity = 0;
-        pipes.length = 0;
-        frame = 0;
-      }
+    update();  // Inicia o jogo
 
-      document.addEventListener("keydown", jumpBird);
+    // ===== Mensagens aleatórias da waifu =====
+    const messages = [
+      "Você consegue, confio em você! 💪",
+      "Cuidado com o cano, mestre! 😳",
+      "Eu tô torcendo por você~ 💖",
+      "Não desiste agora!",
+      "Uau, você é incrível! ✨"
+    ];
 
-      update();  // Start the game
-
-      // ===== Mensagens aleatórias da waifu =====
-      const messages = [
-        "Você consegue, confio em você! 💪",
-        "Cuidado com o cano, mestre! 😳",
-        "Eu tô torcendo por você~ 💖",
-        "Não desiste agora!",
-        "Uau, você é incrível! ✨"
-      ];
-
-      function showWaifuMessage(text) {
-        const dialog = document.getElementById("waifuDialog");
-        dialog.innerText = text;
-        setTimeout(() => {
-          dialog.innerText = messages[Math.floor(Math.random() * messages.length)];
-        }, 3000);
-      }
-    </script>
-  </body>
+    function showWaifuMessage(text) {
+      const dialog = document.getElementById("waifuDialog");
+      dialog.innerText = text;
+      setTimeout(() => {
+        dialog.innerText = messages[Math.floor(Math.random() * messages.length)];
+      }, 3000);
+    }
+  </script>
+</body>
 </html>
+
