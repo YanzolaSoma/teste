@@ -6,6 +6,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
   <title>YCM</title>
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/fontawesome.css">
+  <link rel="stylesheet" href="assets/css/templatemo-lugx-gaming.css">
+  <link rel="stylesheet" href="assets/css/owl.css">
+  <link rel="stylesheet" href="assets/css/animate.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+
   <style>
     /* ===== Preloader Anime Style ===== */
     #anime-preloader {
@@ -105,6 +111,42 @@
       position: relative;
       display: inline-block;
     }
+
+    /* ===== Mascote Waifu ===== */
+    .waifu-mascot {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 9999;
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
+    .waifu-mascot img {
+      width: 120px;
+      height: auto;
+      border-radius: 12px;
+      filter: drop-shadow(0 0 10px #ff80c0);
+    }
+
+    .waifu-dialog {
+      max-width: 220px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid #ff80c0;
+      border-radius: 12px;
+      padding: 8px 12px;
+      font-family: "Poppins", sans-serif;
+      font-size: 14px;
+      color: #333;
+      box-shadow: 0 0 15px rgba(255,0,128,0.3);
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
@@ -114,7 +156,54 @@
     <h2 id="preloaderText">CARREGANDO...</h2>
   </div>
 
-  <!-- ===== Flappy Bird ===== -->
+  <!-- ===== Header ===== -->
+  <header class="header-area header-sticky">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <a href="index.html" class="logo">
+              <img src="assets/images/images.jpeg" alt="" style="width: 158px;">
+            </a>
+            <ul class="nav">
+              <li><a href="index.html" class="active">Home</a></li>
+              <li><a href="shop.html">Our Shop</a></li>
+              <li><a href="product-details.html">Product Details</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="#">Sign In</a></li>
+            </ul>   
+            <a class='menu-trigger'>
+              <span>Menu</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Banner ===== -->
+  <div class="main-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 align-self-center">
+          <div class="caption header-text">
+            <h6>Welcome to lugx</h6>
+            <h2>BEST GAMING SITE EVER!</h2>
+            <p>LUGX Gaming is free Bootstrap 5 HTML CSS website template for your gaming websites. You can download and use this layout for commercial purposes. Please tell your friends about TemplateMo.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 offset-lg-2">
+          <div class="right-image">
+            <img src="assets/images/images.jpeg" alt="">
+            <span class="price">$22</span>
+            <span class="offer">-40%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Flappy Bird Section ===== -->
   <div class="game-section">
     <h2>Play Flappy Bird!</h2>
     <div class="game-container">
@@ -132,6 +221,22 @@
     </div>
   </div>
 
+  <!-- ===== Mascote Waifu ===== -->
+  <div class="waifu-mascot">
+    <img src="https://i.pinimg.com/originals/62/29/11/622911c34890dd8889ac6be8e1945df2.gif" alt="waifu">
+    <div class="waifu-dialog" id="waifuDialog">Oi mestre~ 💖 Vamos jogar Flappy Bird?</div>
+  </div>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="container">
+      <div class="col-lg-12">
+        <p>Copyright © 2048 LUGX Gaming Company. All rights reserved. 
+        &nbsp;&nbsp; <a rel="nofollow" href="https://templatemo.com" target="_blank">Design: TemplateMo</a></p>
+      </div>
+    </div>
+  </footer>
+
   <script>
     // ===== Preloader: dura mais tempo =====
     window.addEventListener("load", () => {
@@ -140,7 +245,7 @@
         setTimeout(() => {
           document.getElementById("anime-preloader").classList.add("fade-out");
         }, 1500);
-      }, 2000); // 2s antes de trocar pra "BEM VINDO"
+      }, 2000);
     });
 
     // ===== Flappy Bird =====
@@ -237,6 +342,7 @@
     function jumpBird() {
       if (!gameRunning) return;
       birdVelocity = jump;
+      showWaifuMessage("Boa! Pulou direitinho! 💕");
     }
 
     function resetGame() {
@@ -260,6 +366,7 @@
     function gameOver() {
       gameRunning = false;
       document.getElementById("gameOverOverlay").style.display = "flex";
+      showWaifuMessage("Awn... você perdeu 😢 Tenta de novo!");
     }
 
     function restartGame() {
@@ -269,7 +376,23 @@
 
     document.addEventListener("keydown", jumpBird);
     drawBird(); // mostra pássaro parado no início
+
+    // ===== Mensagens aleatórias da waifu =====
+    const messages = [
+      "Você consegue, confio em você! 💪",
+      "Cuidado com o cano, mestre! 😳",
+      "Eu tô torcendo por você~ 💖",
+      "Não desiste agora!",
+      "Uau, você é incrível! ✨"
+    ];
+
+    function showWaifuMessage(text) {
+      const dialog = document.getElementById("waifuDialog");
+      dialog.innerText = text;
+      setTimeout(() => {
+        dialog.innerText = messages[Math.floor(Math.random() * messages.length)];
+      }, 3000);
+    }
   </script>
 </body>
 </html>
-
