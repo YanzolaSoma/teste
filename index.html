@@ -6,12 +6,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
   <title>YCM</title>
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/fontawesome.css">
-  <link rel="stylesheet" href="assets/css/templatemo-lugx-gaming.css">
-  <link rel="stylesheet" href="assets/css/owl.css">
-  <link rel="stylesheet" href="assets/css/animate.css">
-  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-
   <style>
     /* ===== Preloader Anime Style ===== */
     #anime-preloader {
@@ -58,40 +52,58 @@
       50% { transform: translateY(-8px); }
     }
 
-    /* ===== Mascote Waifu ===== */
-    .waifu-mascot {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      z-index: 9999;
+    /* ===== Botão Play & GameOver ===== */
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
       display: flex;
-      align-items: flex-end;
-      gap: 10px;
-    }
-
-    .waifu-mascot img {
-      width: 120px;
-      height: auto;
-      border-radius: 12px;
-      filter: drop-shadow(0 0 10px #ff80c0);
-    }
-
-    .waifu-dialog {
-      max-width: 220px;
-      background: rgba(255, 255, 255, 0.95);
-      border: 2px solid #ff80c0;
-      border-radius: 12px;
-      padding: 8px 12px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
       font-family: "Poppins", sans-serif;
-      font-size: 14px;
-      color: #333;
-      box-shadow: 0 0 15px rgba(255,0,128,0.3);
-      animation: fadeIn 0.5s ease;
+      font-size: 32px;
+      font-weight: bold;
+      z-index: 100;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+    .overlay button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      background: #ff80c0;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 12px #ff80c0;
+      transition: 0.3s;
+    }
+
+    .overlay button:hover {
+      background: #ff5ca7;
+    }
+
+    /* ===== Pontuação ===== */
+    #score {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 28px;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 0 0 8px black;
+      font-family: "Poppins", sans-serif;
+    }
+
+    /* ===== Canvas Flappy ===== */
+    .game-container {
+      position: relative;
+      display: inline-block;
     }
   </style>
 </head>
@@ -99,92 +111,39 @@
   <!-- ===== Preloader Anime ===== -->
   <div id="anime-preloader">
     <img src="https://i.pinimg.com/originals/1c/f2/70/1cf2702f9b8d0751c063ab1c35d6ac7b.gif" alt="loading">
-    <h2>CARREGANDO...</h2>
-  </div>
-
-  <!-- ===== Header ===== -->
-  <header class="header-area header-sticky">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <nav class="main-nav">
-            <a href="index.html" class="logo">
-              <img src="assets/images/images.jpeg" alt="" style="width: 158px;">
-            </a>
-            <ul class="nav">
-              <li><a href="index.html" class="active">Home</a></li>
-              <li><a href="shop.html">Our Shop</a></li>
-              <li><a href="product-details.html">Product Details</a></li>
-              <li><a href="contact.html">Contact Us</a></li>
-              <li><a href="#">Sign In</a></li>
-            </ul>   
-            <a class='menu-trigger'>
-              <span>Menu</span>
-            </a>
-          </nav>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- ===== Banner ===== -->
-  <div class="main-banner">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 align-self-center">
-          <div class="caption header-text">
-            <h6>Welcome to lugx</h6>
-            <h2>BEST GAMING SITE EVER!</h2>
-            <p>LUGX Gaming is free Bootstrap 5 HTML CSS website template for your gaming websites. You can download and use this layout for commercial purposes. Please tell your friends about TemplateMo.</p>
-          </div>
-        </div>
-        <div class="col-lg-4 offset-lg-2">
-          <div class="right-image">
-            <img src="assets/images/images.jpeg" alt="">
-            <span class="price">$22</span>
-            <span class="offer">-40%</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <h2 id="preloaderText">CARREGANDO...</h2>
   </div>
 
   <!-- ===== Flappy Bird ===== -->
   <div class="game-section">
     <h2>Play Flappy Bird!</h2>
-    <canvas id="flappyBirdGame" width="800" height="600"></canvas>
-  </div>
-
-  <!-- ===== Mascote Waifu ===== -->
-  <div class="waifu-mascot">
-    <img src="https://i.pinimg.com/originals/62/29/11/622911c34890dd8889ac6be8e1945df2.gif" alt="waifu">
-    <div class="waifu-dialog" id="waifuDialog">Oi mestre~ 💖 Vamos jogar Flappy Bird?</div>
-  </div>
-
-  <!-- ===== Footer ===== -->
-  <footer>
-    <div class="container">
-      <div class="col-lg-12">
-        <p>Copyright © 2048 LUGX Gaming Company. All rights reserved. 
-        &nbsp;&nbsp; <a rel="nofollow" href="https://templatemo.com" target="_blank">Design: TemplateMo</a></p>
+    <div class="game-container">
+      <canvas id="flappyBirdGame" width="800" height="600"></canvas>
+      <div id="score">0</div>
+      <!-- Overlays -->
+      <div id="startOverlay" class="overlay">
+        <div>FLAPPY BIRD</div>
+        <button onclick="startGame()">▶ Play</button>
+      </div>
+      <div id="gameOverOverlay" class="overlay" style="display:none;">
+        <div>GAME OVER</div>
+        <button onclick="restartGame()">Jogar Novamente</button>
       </div>
     </div>
-  </footer>
-
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/js/isotope.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-  <script src="assets/js/counter.js"></script>
-  <script src="assets/js/custom.js"></script>
+  </div>
 
   <script>
-    // ===== Preloader desaparece quando o site carrega =====
+    // ===== Preloader: dura mais tempo =====
     window.addEventListener("load", () => {
-      document.getElementById("anime-preloader").classList.add("fade-out");
+      setTimeout(() => {
+        document.getElementById("preloaderText").innerText = "BEM VINDO!";
+        setTimeout(() => {
+          document.getElementById("anime-preloader").classList.add("fade-out");
+        }, 1500);
+      }, 2000); // 2s antes de trocar pra "BEM VINDO"
     });
 
-    // ===== Jogo Flappy Bird =====
+    // ===== Flappy Bird =====
     const birdImage = new Image();
     birdImage.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOLplzV906A5uOSnie-v2U4bn-yaaCqz80xg&s";
 
@@ -197,11 +156,14 @@
     const gravity = 0.5;
     const jump = -10;
 
-    const pipes = [];
+    let pipes = [];
     const pipeWidth = 50;
     const pipeGap = 200;
     let pipeInterval = 100;
     let frame = 0;
+    let score = 0;
+
+    let gameRunning = false;
 
     function drawBird() {
       ctx.drawImage(birdImage, birdX, birdY, 40, 40);
@@ -219,11 +181,17 @@
     function updatePipes() {
       if (frame % pipeInterval === 0) {
         const pipeHeight = Math.floor(Math.random() * (canvas.height - pipeGap));
-        pipes.push({ x: canvas.width, top: pipeHeight, bottom: pipeHeight + pipeGap });
+        pipes.push({ x: canvas.width, top: pipeHeight, bottom: pipeHeight + pipeGap, passed: false });
       }
 
       for (let i = 0; i < pipes.length; i++) {
         pipes[i].x -= 2;
+
+        if (!pipes[i].passed && pipes[i].x + pipeWidth < birdX) {
+          score++;
+          document.getElementById("score").innerText = score;
+          pipes[i].passed = true;
+        }
 
         if (pipes[i].x + pipeWidth <= 0) {
           pipes.splice(i, 1);
@@ -247,12 +215,14 @@
     }
 
     function update() {
+      if (!gameRunning) return;
+
       birdVelocity += gravity;
       birdY += birdVelocity;
 
       if (detectCollision()) {
-        resetGame();
-        showWaifuMessage("Awn... você perdeu 😢 Tenta de novo!");
+        gameOver();
+        return;
       }
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -265,37 +235,40 @@
     }
 
     function jumpBird() {
+      if (!gameRunning) return;
       birdVelocity = jump;
-      showWaifuMessage("Boa! Pulou direitinho! 💕");
     }
 
     function resetGame() {
       birdY = canvas.height / 2;
       birdVelocity = 0;
-      pipes.length = 0;
+      pipes = [];
       frame = 0;
+      score = 0;
+      document.getElementById("score").innerText = score;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawBird();
+    }
+
+    function startGame() {
+      document.getElementById("startOverlay").style.display = "none";
+      resetGame();
+      gameRunning = true;
+      update();
+    }
+
+    function gameOver() {
+      gameRunning = false;
+      document.getElementById("gameOverOverlay").style.display = "flex";
+    }
+
+    function restartGame() {
+      document.getElementById("gameOverOverlay").style.display = "none";
+      startGame();
     }
 
     document.addEventListener("keydown", jumpBird);
-
-    update();  // Inicia o jogo
-
-    // ===== Mensagens aleatórias da waifu =====
-    const messages = [
-      "Você consegue, confio em você! 💪",
-      "Cuidado com o cano, mestre! 😳",
-      "Eu tô torcendo por você~ 💖",
-      "Não desiste agora!",
-      "Uau, você é incrível! ✨"
-    ];
-
-    function showWaifuMessage(text) {
-      const dialog = document.getElementById("waifuDialog");
-      dialog.innerText = text;
-      setTimeout(() => {
-        dialog.innerText = messages[Math.floor(Math.random() * messages.length)];
-      }, 3000);
-    }
+    drawBird(); // mostra pássaro parado no início
   </script>
 </body>
 </html>
