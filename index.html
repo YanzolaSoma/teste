@@ -34,7 +34,7 @@
       text-shadow: 0 0 12px black;
       margin-bottom: 20px;
     }
-YCMGOO
+
     .game-container {
       position: relative;
       display: inline-block;
@@ -345,7 +345,8 @@ YCMGOO
       startGame();
     }
 
-    document.addEventListener("keydown", jumpBird);
+    // Mudança: Agora usa clique no canvas em vez de tecla de espaço
+    canvas.addEventListener("click", jumpBird);
     drawBird();
 
     // ===== Mensagens aleatórias da waifu =====
@@ -367,9 +368,3 @@ YCMGOO
   </script>
 </body>
 </html>
-
-
-
-
-
-
